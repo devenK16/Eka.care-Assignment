@@ -49,7 +49,7 @@ fun UserFormScreen(viewModel: UserViewModel) {
             },
             title = { Text(text = "Success") },
             text = {
-                Text(text = "Data saved successfully!" + "\n" + "Total Users data saved locally: $userCount")
+                Text(text = "Data saved successfully!" + "\n" + "Total No. of User's data saved: $userCount")
             }
         )
     }
