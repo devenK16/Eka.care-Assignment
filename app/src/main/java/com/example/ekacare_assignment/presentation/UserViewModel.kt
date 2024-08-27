@@ -35,7 +35,7 @@ class UserViewModel @Inject constructor(
     }
 
     fun validateAndInsertUser(name: String, age: String, dob: String, address: String): Boolean {
-        if (name.isBlank()) {
+        if (name.trim().isBlank()) {
             _validationError.value = "*Name cannot be empty"
             return false
         }
@@ -47,7 +47,7 @@ class UserViewModel @Inject constructor(
             _validationError.value = "*Date of Birth cannot be empty, Select your date of birth"
             return false
         }
-        if (address.isBlank()) {
+        if (address.trim().isBlank()) {
             _validationError.value = "*Address cannot be empty"
             return false
         }
@@ -60,7 +60,7 @@ class UserViewModel @Inject constructor(
 
     fun insertUser(name: String, age: Int, dob: String, address: String) {
         viewModelScope.launch {
-            val user = User(name = name, age = age, dob = dob, address = address)
+            val user = User(name = name.trim(), age = age, dob = dob, address = address.trim())
             repository.insertUser(user)
         }
     }

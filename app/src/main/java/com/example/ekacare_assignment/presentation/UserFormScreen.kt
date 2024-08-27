@@ -9,10 +9,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.SemanticsProperties.ImeAction
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -94,6 +96,7 @@ fun UserFormScreen(viewModel: UserViewModel) {
                 .fillMaxWidth()
                 .padding(start = 6.dp, end = 6.dp),
             maxLines = 1,
+            singleLine = true,
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Grey,
                 unfocusedBorderColor = Black,
@@ -120,6 +123,7 @@ fun UserFormScreen(viewModel: UserViewModel) {
                 .padding(start = 6.dp, end = 6.dp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             maxLines = 1,
+            singleLine = true,
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Grey,
                 unfocusedBorderColor = Black,
@@ -179,6 +183,7 @@ fun UserFormScreen(viewModel: UserViewModel) {
                 .fillMaxWidth()
                 .padding(start = 6.dp, end = 6.dp),
             maxLines = 3,
+            keyboardOptions = KeyboardOptions(imeAction = androidx.compose.ui.text.input.ImeAction.Done),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Grey,
                 unfocusedBorderColor = Black,
@@ -192,7 +197,6 @@ fun UserFormScreen(viewModel: UserViewModel) {
             )
         )
         Spacer(modifier = Modifier.height(16.dp))
-        // Display validation error if any
         validationError?.let { error ->
             Text(
                 text = error,
